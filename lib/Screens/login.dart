@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:election_management_system/homepage.dart';
+import 'package:election_management_system/Screens/homepage.dart';
 
 class LoginPage extends StatelessWidget {
 
@@ -19,9 +19,9 @@ class LoginPage extends StatelessWidget {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  Color(0xFF8A2387),
-                  Color(0xFFE94057),
-                  Color(0xFFF27121),
+                  Color(0xFF293045),
+                  Color(0xFF4A6488),
+                  Color(0xFF223C5B),
                 ] 
                 )
 
@@ -43,9 +43,9 @@ class LoginPage extends StatelessWidget {
                   height: 380,
                   width: 600,
                   decoration: BoxDecoration(  
-                  border: Border.all(color: Colors.grey, width: 2),  
+                  border: Border.all(color: Colors.grey, width: 1),  
                   borderRadius: BorderRadius.circular(10), 
-                  color: Colors.white,
+                  color: Colors.blueGrey,
                   boxShadow: const [  
                         BoxShadow(
                         color: Colors.black87,
@@ -95,7 +95,18 @@ class LoginPage extends StatelessWidget {
                           height: 40,
                           width: 150,
                           decoration: BoxDecoration(
-                              color: Colors.pinkAccent, borderRadius: BorderRadius.circular(20)),
+                              color: Color(0xFF293045),
+                              borderRadius: BorderRadius.circular(20),
+                                boxShadow: const [  
+                                  BoxShadow(
+                                  color: Colors.black87,
+                                  offset: Offset(6.0, 6.0),
+                                  blurRadius: 10.0,
+                                ), 
+                              ]
+                            ),    
+                        
+                              
                           // ignore: deprecated_member_use
                           child: FlatButton(
                             onPressed: () {
@@ -113,10 +124,6 @@ class LoginPage extends StatelessWidget {
                           ),
                         ),
                       )
-                      
-
-                    
-                      
                       
                     ],
                   ),
@@ -165,10 +172,10 @@ class __UserState extends State<_User> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: Colors.grey[350],
                 ),
                 validator: (value) => value == null ? "Select a country" : null,
-                dropdownColor: Colors.pinkAccent,
+                dropdownColor: Colors.grey[300],
                 value: selectedValue,
                 onChanged: (String? newValue) {
                   setState(() {
@@ -240,12 +247,14 @@ class __DepartmentState extends State<_Department> {
                   id = 1;
                 });
               },
+              activeColor: Colors.black,
             ),
             Text(
               'JHS',
               style: new TextStyle(
                 fontSize: 17.0,
                 fontWeight: FontWeight.w900,
+                color: Colors.white,
               ),
             ),
             SizedBox(width: 70.0,),
@@ -259,12 +268,14 @@ class __DepartmentState extends State<_Department> {
                   id = 2;
                 });
               },
+              activeColor: Colors.black,
             ),
             Text(
               'SHS',
               style: new TextStyle(
                 fontSize: 17.0,
                 fontWeight: FontWeight.w900,
+                color: Colors.white,
               ),
             ),
           ],
@@ -298,10 +309,11 @@ class __UsernameState extends State<_Username> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   filled: true,
-                  fillColor: Colors.white,
-                  labelText: 'Username',
+                  fillColor: Colors.grey[350],
+                  hintText: 'Username',
                 ),
               )
+     
     );
   }
 }
@@ -331,8 +343,8 @@ class __PasswordState extends State<_Password> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   filled: true,
-                  fillColor: Colors.white,
-                  labelText: 'Password'),
+                  fillColor: Colors.grey[350],
+                  hintText: 'Password'),
               )
     );
 
