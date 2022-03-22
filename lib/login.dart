@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:election_management_system/homepage.dart';
 
 class LoginPage extends StatelessWidget {
-
- 
 
   @override
   
@@ -31,48 +29,94 @@ class LoginPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget> [
-                SizedBox(
-                    width: 100,
-                    height: 100,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Padding(padding: EdgeInsets.only(top: 25.0),
-                        child: Image.asset('assets/logo.png')
-                    ),
+                Padding(
+                  padding: EdgeInsets.only(top: 50.0, bottom: 15.0),
+                  child: SizedBox(
+                    width: 300,
+                    height: 160,
+                    child: Image.asset('assets/emsLogo.png'),
+                    
+                  )
                 ),
-                ),
-                
-                const Text(
-                  'Election Management System',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-
-                  ),
-                ),
-                const SizedBox(height: 30),
+              
                 Container(
-                  height: 400,
+                  height: 380,
                   width: 600,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
+                  decoration: BoxDecoration(  
+                  border: Border.all(color: Colors.grey, width: 2),  
+                  borderRadius: BorderRadius.circular(10), 
+                  color: Colors.white,
+                  boxShadow: const [  
+                        BoxShadow(
+                        color: Colors.black87,
+                        offset: Offset(6.0, 6.0),
+                        blurRadius: 10.0,
+                      ), 
+                  ]
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(height: 30),
-                      Text(
-                        'asdfghjkl',
+                      /*Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                        'Log in As',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Users(),
+                      ),*/
+                      //dropdown box for user type
+                      Padding(
+                        padding: EdgeInsets.only(top: 15.0, bottom: 10.0),
+                        child: _User()
+                      ),
+                      //radio button for depertment
+                      Padding(
+                        padding: EdgeInsets.only(left: 100.0, bottom: 10.0, right: 100.0),
+                        child: _Department(),
+                      ),
+                      //input field for username
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 10.0),
+                        child: _Username()
+                      ),
+                       //input field for password
+                      Padding(
+                        padding: EdgeInsets.only(top: 5.0, bottom: 25.0),
+                        child: _Password()
+                      ),
+                      //login button
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 10.0),
+                        child:Container(
+                          height: 40,
+                          width: 150,
+                          decoration: BoxDecoration(
+                              color: Colors.pinkAccent, borderRadius: BorderRadius.circular(20)),
+                          // ignore: deprecated_member_use
+                          child: FlatButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context, MaterialPageRoute(builder: (_) => HomePage()));
+                            },
+                            child: const Text(
+                              'Log In',
+                              style: TextStyle(
+                                color: Colors.white, 
+                                fontSize: 17,
+                                fontWeight: FontWeight.w900
+                                ),
+                            ),
+                          ),
+                        ),
                       )
+                      
+
+                    
+                      
                       
                     ],
                   ),
@@ -89,40 +133,208 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-class Users extends StatefulWidget {
-  const Users({ Key? key }) : super(key: key);
-  
+class _User extends StatefulWidget {
+  const _User({ Key? key }) : super(key: key);
+
   @override
-  State<Users> createState() => _UsersState();
+  State<_User> createState() => __UserState();
 }
 
-class _UsersState extends State<Users> {
-   String selectedValue = 'Login As';
+class __UserState extends State<_User> {
+ String? selectedValue = 'Admin';
+  final _dropdownFormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
-                        value: selectedValue,
-                        items: const [
-                          DropdownMenuItem(
-                            child: Text('Admin'),
-                              value: 'Admin',
-                            ),
-                            DropdownMenuItem(
-                            child: Text('Voter'),
-                              value: 'Voter',
-                            ),
-                            DropdownMenuItem(
-                            child: Text('Campaign Manager'),
-                              value: 'Campaign Manager',
-                            ),
-                        ],
-                      
-                        onChanged: (value) {
-                          setState(() {
-                          selectedValue = 'its a prank';
-                          }
-                         );
-                        }
+    return Form(
+        key: _dropdownFormKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(right: 100.0, left: 100.0),
+              child: DropdownButtonFormField(
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+
+                    borderSide: BorderSide(color: Colors.grey, width: 2),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 2),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+                validator: (value) => value == null ? "Select a country" : null,
+                dropdownColor: Colors.pinkAccent,
+                value: selectedValue,
+                onChanged: (String? newValue) {
+                  setState(() {
+                    selectedValue = newValue!;
+                  });
+                },
+                items: [
+                  DropdownMenuItem(
+                    child: Text(
+                      'Admin',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    value: 'Admin',
+                  ),
+                   DropdownMenuItem(
+                    child: Text(
+                      'Voter',
+                       style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    value: 'Voter',
+                  ),
+                   DropdownMenuItem(
+                    child: Text(
+                      'Campaign Manager',
+                       style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    value: 'Campaign Manager',
+                    )
+                ]),
+            )
+          ],
+        )
+      );
+  }
+}
+
+class _Department extends StatefulWidget {
+  const _Department({ Key? key }) : super(key: key);
+
+  @override
+  State<_Department> createState() => __DepartmentState();
+}
+
+class __DepartmentState extends State<_Department> {
+   // Default Radio Button Selected Item When App Starts.
+  String radioButtonItem = 'JHS';
+ 
+  // Group Value for Radio Button.
+  int id = 1;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Radio(
+              value: 1,
+              groupValue: id,
+              onChanged: (val) {
+                setState(() {
+                  radioButtonItem = 'JHS';
+                  id = 1;
+                });
+              },
+            ),
+            Text(
+              'JHS',
+              style: new TextStyle(
+                fontSize: 17.0,
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+            SizedBox(width: 70.0,),
+ 
+            Radio(
+              value: 2,
+              groupValue: id,
+              onChanged: (val) {
+                setState(() {
+                  radioButtonItem = 'SHS';
+                  id = 2;
+                });
+              },
+            ),
+            Text(
+              'SHS',
+              style: new TextStyle(
+                fontSize: 17.0,
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+          ],
+        ),
+      ],
     );
+  }
+}
+
+class _Username extends StatefulWidget {
+  const _Username({ Key? key }) : super(key: key);
+
+  @override
+  State<_Username> createState() => __UsernameState();
+}
+
+class __UsernameState extends State<_Username> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: 100.0 , right: 100.0),
+      child: TextField(
+               decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+
+                    borderSide: BorderSide(color: Colors.grey, width: 2),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 2),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  labelText: 'Username',
+                ),
+              )
+    );
+  }
+}
+
+class _Password extends StatefulWidget {
+  const _Password({ Key? key }) : super(key: key);
+
+  @override
+  State<_Password> createState() => __PasswordState();
+}
+
+class __PasswordState extends State<_Password> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: 100.0 , right: 100.0),
+      child: TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+
+                    borderSide: BorderSide(color: Colors.grey, width: 2),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey, width: 2),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  labelText: 'Password'),
+              )
+    );
+
   }
 }
