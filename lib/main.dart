@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:election_management_system/Screens/login.dart';
+import 'package:election_management_system/Screens/homepage.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner:false,
       title: 'Election Management System',
-      home: LoginPage(),
+      home: HomePage(),
     );
   }
 }

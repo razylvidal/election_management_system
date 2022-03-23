@@ -57,17 +57,16 @@ class LoginPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(height: 30),
-                      /*Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                        'Log in As',
+                      SizedBox(height: 35),
+                      Text(
+                        'Please enter your username and password to continue',
                         style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
                         ),
                       ),
-                      ),*/
+                     
                       //dropdown box for user type
                       Padding(
                         padding: EdgeInsets.only(top: 15.0, bottom: 10.0),
@@ -95,7 +94,7 @@ class LoginPage extends StatelessWidget {
                           height: 40,
                           width: 150,
                           decoration: BoxDecoration(
-                              color: Color(0xFF293045),
+                              color: Color(0xFF091C32),
                               borderRadius: BorderRadius.circular(20),
                                 boxShadow: const [  
                                   BoxShadow(
@@ -247,7 +246,7 @@ class __DepartmentState extends State<_Department> {
                   id = 1;
                 });
               },
-              activeColor: Colors.black,
+              activeColor: Color(0xFF091C32),
             ),
             Text(
               'JHS',
@@ -268,7 +267,7 @@ class __DepartmentState extends State<_Department> {
                   id = 2;
                 });
               },
-              activeColor: Colors.black,
+              activeColor: Color(0xFF091C32),
             ),
             Text(
               'SHS',
