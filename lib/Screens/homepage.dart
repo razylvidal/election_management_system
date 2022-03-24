@@ -1,26 +1,17 @@
 import 'package:election_management_system/Widgets/LargeScreen.dart';
 import 'package:election_management_system/Widgets/smallScreen.dart';
+import 'package:election_management_system/Widgets/top_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:election_management_system/Helpers/responsiveness.dart';
+import 'package:election_management_system/Widgets/top_navigator.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({ Key? key }) : super(key: key);
-
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Image.asset(
-          'assets/emsLogo.png',
-          fit: BoxFit.contain,
-          height: 72,
-          ),
-          toolbarHeight: 90,
-        elevation: 5,
-        backgroundColor: Color(0xFF091C32),
-        shadowColor: Colors.grey,
-
-      ),
+      appBar: topNavigationBar(context, scaffoldKey),
+      drawer: Drawer(),
       body: ResponsiveWidget(
         largeScreen: LargeScreen(), 
         smallScreen: SmallScreen(), 
