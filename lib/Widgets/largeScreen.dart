@@ -7,14 +7,20 @@ class LargeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-        children: [
-          Expanded(
-            child: Container(
-              color: Color(0xFF023047),
-            )
-          ),
+        children: [ /*ConstrainedBox(
+                constraints: const BoxConstraints(
+                minWidth: 100,
+                maxWidth:150,
+                ),
+                child:*/ Container(
+                  color: Color(0xFF023047),
+                  width: 230,
+                ),
+              //),
+              
+          
           Expanded( 
-            flex: 6,
+            flex: 5,
             child: Container(
               color: Colors.white,
             ),
