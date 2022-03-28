@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner:false,
       title: 'Election Management System',
       home: HomePage(),
+      
     );
   }
 }
