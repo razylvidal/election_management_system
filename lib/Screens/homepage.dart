@@ -105,6 +105,45 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
+
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: MediaQuery.of(context).size.height * 0.1,
+              width: MediaQuery.of(context).size.width,
+              color: Color(0xFF091C32),
+              child: Center(
+                child: CustomText(
+                  text: 'Election Management System',
+                  color: Colors.white,
+                  size: 30,
+                  weight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.8,
+              width: MediaQuery.of(context).size.width,
+              color: Color(0xFF091C32),
+              child: Center(
+                child: CustomText(
+                  text: 'Welcome to Election Management System',
+                  color: Colors.white,
+                  size: 20,
+                  weight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+
+
+
+
+
     );
+    
   }
 }
