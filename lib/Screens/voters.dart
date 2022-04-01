@@ -5,8 +5,9 @@ import 'package:election_management_system/Widgets/top_navigator.dart';
 import 'package:flutter/material.dart';
 
 import '../Widgets/customText.dart';
+import 'homepage.dart';
 
-class HomePage extends StatelessWidget {
+class VotersPage extends StatelessWidget {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class HomePage extends StatelessWidget {
 
               //Navigation Label
               child: Text(
-                'Dashboard',
+                'Voters',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -146,7 +147,7 @@ class HomePage extends StatelessWidget {
               color: Color(0xFF091C32),
               child: Center(
                 child: CustomText(
-                  text: 'Dashboard',
+                  text: 'Voters',
                   color: Colors.white,
                   size: 30,
                   weight: FontWeight.bold,
