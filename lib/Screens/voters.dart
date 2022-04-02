@@ -1,14 +1,17 @@
 import 'package:election_management_system/Screens/candidate.dart';
 import 'package:election_management_system/Screens/election.dart';
-import 'package:election_management_system/Screens/voters.dart';
+import 'package:election_management_system/Screens/login.dart';
 import 'package:election_management_system/Widgets/top_navigator.dart';
 import 'package:flutter/material.dart';
 
 import '../Widgets/customText.dart';
 import 'homepage.dart';
 
+// ignore: must_be_immutable
 class VotersPage extends StatelessWidget {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+
+  VotersPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +58,7 @@ class VotersPage extends StatelessWidget {
                 'Dashboard',
                 style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
               ),
-              padding: const EdgeInsets.only(bottom: 25),
+              padding: const EdgeInsets.only(top: 25, bottom: 25),
             ),
             
             //Election Page
@@ -72,7 +75,7 @@ class VotersPage extends StatelessWidget {
               padding: const EdgeInsets.only(top: 25, bottom: 25),
             ),
 
-            //Candidate Page
+            //Candidate Page   
             // ignore: deprecated_member_use
             FlatButton(
               onPressed: () {
@@ -111,12 +114,15 @@ class VotersPage extends StatelessWidget {
             //Account Page
             // ignore: deprecated_member_use
             FlatButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                context, MaterialPageRoute(builder: (_) => LoginPage()));
+              },
               child: const Text(
                 'Account',
                 style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
               ),
-              padding: const EdgeInsets.only(bottom: 25),
+              padding: const EdgeInsets.only(top: 25, bottom: 25),
             ),
 
 
@@ -136,40 +142,38 @@ class VotersPage extends StatelessWidget {
 
 
       //Body
-      body: Container(
-        child: Column(
-          children: <Widget>[
+      body: Column(
+        children: <Widget>[
 
-            //Title Page
-            Container(
-              height: MediaQuery.of(context).size.height * 0.1,
-              width: MediaQuery.of(context).size.width,
-              color: Color(0xFF091C32),
-              child: Center(
-                child: CustomText(
-                  text: 'Voters',
-                  color: Colors.white,
-                  size: 30,
-                  weight: FontWeight.bold,
-                ),
+          //Title Page
+          Container(
+            height: MediaQuery.of(context).size.height * 0.1,
+            width: MediaQuery.of(context).size.width,
+            color: Color(0xFF091C32),
+            child: Center(
+              child: CustomText(
+                text: 'Voters',
+                color: Colors.white,
+                size: 30,
+                weight: FontWeight.bold,
               ),
             ),
+          ),
 
-            Container(
-              height: MediaQuery.of(context).size.height * 0.8,
-              width: MediaQuery.of(context).size.width,
-              color: Color(0xFF091C32),
-              child: Center(
-                child: CustomText(
-                  text: 'Welcome to Election Management System',
-                  color: Colors.white,
-                  size: 20,
-                  weight: FontWeight.bold,
-                ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.8,
+            width: MediaQuery.of(context).size.width,
+            color: Colors.grey,
+            child: Center(
+              child: CustomText(
+                text: 'Welcome to Election Management System',
+                color: Colors.white,
+                size: 20,
+                weight: FontWeight.bold,
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
 
 

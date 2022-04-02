@@ -1,5 +1,5 @@
 import 'package:election_management_system/Screens/candidate.dart';
-import 'package:election_management_system/Screens/election.dart';
+import 'package:election_management_system/Screens/login.dart';
 import 'package:election_management_system/Screens/voters.dart';
 import 'package:election_management_system/Widgets/top_navigator.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +7,11 @@ import 'package:flutter/material.dart';
 import '../Widgets/customText.dart';
 import 'homepage.dart';
 
+// ignore: must_be_immutable
 class ElectionPage extends StatelessWidget {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+
+  ElectionPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +58,7 @@ class ElectionPage extends StatelessWidget {
                 'Dashboard',
                 style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
               ),
-              padding: const EdgeInsets.only(bottom: 25),
+              padding: const EdgeInsets.only(top: 25, bottom: 25),
             ),
             
             //Election Page
@@ -116,14 +119,17 @@ class ElectionPage extends StatelessWidget {
                 'Account',
                 style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
               ),
-              padding: const EdgeInsets.only(bottom: 25),
+              padding: const EdgeInsets.only(top: 25, bottom: 25),
             ),
 
 
             //Logout Button
             // ignore: deprecated_member_use
             FlatButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                context, MaterialPageRoute(builder: (_) => LoginPage()));
+              },
               child: const Text(
                 'Logout',
                 style: TextStyle(color: Colors.red, fontSize: 25),
