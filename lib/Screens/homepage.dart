@@ -17,128 +17,128 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     var colors;
     return Scaffold(
-        //Top Navigation Bar
-        appBar: topNavigationBar(context, scaffoldKey),
+      //Top Navigation Bar
+      appBar: topNavigationBar(context, scaffoldKey),
 
-        //hamburger menu
-        endDrawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              const DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Color(0xFF091C32),
-                ),
-
-                //Navigation Label
-                child: Text(
-                  'Dashboard',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                  ),
-                ),
+      //hamburger menu
+      endDrawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xFF091C32),
               ),
 
-              //Label Manage
-              const ListTile(
-                contentPadding: EdgeInsets.only(
-                  left: 125,
+              //Navigation Label
+              child: Text(
+                'Dashboard',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
                 ),
-                title: Text('Manage'),
               ),
+            ),
 
-              //Dashboard Page
-              // ignore: deprecated_member_use
-              FlatButton(
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HomePage()));
-                },
-                child: const Text(
-                  'Dashboard',
-                  style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
-                ),
-                padding: const EdgeInsets.only(top: 25, bottom: 25),
+            //Label Manage
+            const ListTile(
+              contentPadding: EdgeInsets.only(
+                left: 125,
               ),
+              title: Text('Manage'),
+            ),
 
-              //Election Page
-              // ignore: deprecated_member_use
-              FlatButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => ElectionPage()));
-                },
-                child: const Text(
-                  'Election',
-                  style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
-                ),
-                padding: const EdgeInsets.only(top: 25, bottom: 25),
+            //Dashboard Page
+            // ignore: deprecated_member_use
+            FlatButton(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => HomePage()));
+              },
+              child: const Text(
+                'Dashboard',
+                style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
               ),
+              padding: const EdgeInsets.only(top: 25, bottom: 25),
+            ),
 
-              //Candidate Page
-              // ignore: deprecated_member_use
-              FlatButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => CandidatePage()));
-                },
-                child: const Text(
-                  'Candidates',
-                  style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
-                ),
-                padding: const EdgeInsets.only(top: 25, bottom: 25),
+            //Election Page
+            // ignore: deprecated_member_use
+            FlatButton(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => ElectionPage()));
+              },
+              child: const Text(
+                'Election',
+                style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
               ),
+              padding: const EdgeInsets.only(top: 25, bottom: 25),
+            ),
 
-              //Voters Page
-              // ignore: deprecated_member_use
-              FlatButton(
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => VotersPage()));
-                },
-                child: const Text(
-                  'Voters',
-                  style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
-                ),
-                padding: const EdgeInsets.only(top: 25, bottom: 25),
+            //Candidate Page
+            // ignore: deprecated_member_use
+            FlatButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => CandidatePage()));
+              },
+              child: const Text(
+                'Candidates',
+                style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
               ),
+              padding: const EdgeInsets.only(top: 25, bottom: 25),
+            ),
 
-              //Label Settings
-              const ListTile(
-                contentPadding: EdgeInsets.only(left: 125),
-                title: Text('Settings'),
+            //Voters Page
+            // ignore: deprecated_member_use
+            FlatButton(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => VotersPage()));
+              },
+              child: const Text(
+                'Voters',
+                style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
               ),
+              padding: const EdgeInsets.only(top: 25, bottom: 25),
+            ),
 
-              //Account Page
-              // ignore: deprecated_member_use
-              FlatButton(
-                onPressed: () {},
-                child: const Text(
-                  'Account',
-                  style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
-                ),
-                padding: const EdgeInsets.only(top: 25, bottom: 25),
-              ),
+            //Label Settings
+            const ListTile(
+              contentPadding: EdgeInsets.only(left: 125),
+              title: Text('Settings'),
+            ),
 
-              //Logout Button
-              // ignore: deprecated_member_use
-              FlatButton(
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => LoginPage()));
-                },
-                child: const Text(
-                  'Logout',
-                  style: TextStyle(color: Colors.red, fontSize: 25),
-                ),
-                padding: const EdgeInsets.only(top: 25, bottom: 25),
+            //Account Page
+            // ignore: deprecated_member_use
+            FlatButton(
+              onPressed: () {},
+              child: const Text(
+                'Account',
+                style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
               ),
-            ],
-          ),
+              padding: const EdgeInsets.only(top: 25, bottom: 25),
+            ),
+
+            //Logout Button
+            // ignore: deprecated_member_use
+            FlatButton(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => LoginPage()));
+              },
+              child: const Text(
+                'Logout',
+                style: TextStyle(color: Colors.red, fontSize: 25),
+              ),
+              padding: const EdgeInsets.only(top: 25, bottom: 25),
+            ),
+          ],
         ),
+      ),
 
-        //Body
+      //Body
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -156,7 +156,6 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-
               const Padding(
                 padding: EdgeInsets.only(left: 800, top: 20),
                 child: Text(
@@ -167,30 +166,132 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-            ], 
-            
-            
+            ],
           ),
-        Expanded(
-              child: Container(
-                width: (MediaQuery.of(context).size.width) / 1.5,
-                height: (MediaQuery.of(context).size.height) / 2,
-                child: DashboardList(),
+          Row(
+            children: [
+              Expanded(
+                child: SizedBox(
+                  width: (MediaQuery.of(context).size.width) / 1.5,
+                  height: (MediaQuery.of(context).size.height) / 2,
+                  child: DashboardList(),
+                ),
               ),
-            ),
+
+             Column(
+               children: [
+                 Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  shadowColor: Colors.black,
+                  elevation: 5,
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        TextButton.icon(
+                          //Today collection graph
+                          icon: Icon(
+                            Icons.search,
+                            size: 24,
+                            color: Colors.black,
+                          ),
+                          label: Text(
+                            //vars here to be setState
+                            'Search',
+                            softWrap: true,
+                            style: TextStyle(
+                              fontSize: 50,
+                              color: Colors.blue,
+                              fontFamily: 'Cairo_Bold',
+                            ),
+                          ),
+                          onPressed: () {}, //pwdeng refresh button
+                        ),
+                      ],
+                      
+                    ),
+                  ),
+                 
+                ),
+                
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  shadowColor: Colors.black,
+                  elevation: 5,
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        TextButton.icon(
+                          //Today collection graph
+                          icon: Icon(
+                            Icons.menu,
+                            size: 24,
+                            color: Colors.black,
+                          ),
+                          label: Text(
+                            //vars here to be setState
+                            'Voters',
+                            softWrap: true,
+                            style: TextStyle(
+                              fontSize: 50,
+                              color: Colors.blue,
+                              fontFamily: 'Cairo_Bold',
+                            ),
+                          ),
+                          onPressed: () {}, //pwdeng refresh button
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  shadowColor: Colors.black,
+                  elevation: 5,
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        TextButton.icon(
+                          //Today collection graph
+                          icon: Icon(
+                            Icons.menu,
+                            size: 24,
+                            color: Colors.black,
+                          ),
+                          label: Text(
+                            //vars here to be setState
+                            'See Result',
+                            softWrap: true,
+                            style: TextStyle(
+                              fontSize: 50,
+                              color: Colors.blue,
+                              fontFamily: 'Cairo_Bold',
+                            ),
+                          ),
+                          onPressed: () {}, //pwdeng refresh button
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
 
 
-
-        ]
-      )
-
-
-
-
-
-
-
-
+            
+            ],
+             ) 
+            ],
+          )
+        ],
+      ),
     );
   }
 }
