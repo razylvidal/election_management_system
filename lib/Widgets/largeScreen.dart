@@ -1,3 +1,6 @@
+import 'package:election_management_system/Controller/menuController.dart';
+import 'package:election_management_system/Widgets/side_menu.dart';
+import 'package:election_management_system/Widgets/side_menu_item.dart';
 import 'package:flutter/material.dart';
 
 
@@ -7,16 +10,17 @@ class LargeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-        children: [ /*ConstrainedBox(
+        children: [ ConstrainedBox(
                 constraints: const BoxConstraints(
                 minWidth: 100,
-                maxWidth:150,
+                maxWidth:200,
                 ),
-                child:*/ Container(
+                child: Container(
                   color: Color(0xFF023047),
-                  width: 230,
+                
+                  child: SideMenu(),
                 ),
-              //),
+              ),
               
           
           Expanded( 

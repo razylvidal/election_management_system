@@ -1,4 +1,5 @@
 import 'package:election_management_system/Constant/style.dart';
+import 'package:election_management_system/Screens/homepage.dart';
 import 'package:election_management_system/Widgets/customText.dart';
 import 'package:election_management_system/Helpers/Responsiveness.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +10,10 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
     backgroundColor: Color(0xFF091C32),
           shadowColor: Colors.grey,
           leadingWidth: 200,
-          toolbarHeight: 80,
+          toolbarHeight: 100,
           elevation: 5,
         
-    leading: !ResponsiveWidget.isLargeScreen(context) ? 
+      leading: !ResponsiveWidget.isLargeScreen(context) ? 
       Row(
             children: [
               IconButton(
@@ -25,7 +26,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
               Visibility(
                 
                 child: CustomText(
-                  text: '    Overview',
+                  text: '    Dashboard',
                   color: white,
                   size: 20,
                   weight: FontWeight.bold,
@@ -34,32 +35,45 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
               )
           ]
           ) : 
-          Row(
+
+          InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
+              }, // Image tapped
+              splashColor: Colors.white10, // Splash color over image
+              child: Ink.image(
+                padding: EdgeInsets.all( 15.0),
+                fit: BoxFit.cover, // Fixes border issues
+                width: 100,
+                height: 80,
+                image: AssetImage(
+                  'assets/emsLogo.png',
+                  
+                ),
+              ),
+            )
+                      /*Row(
             children: [
               Container(
                 padding: EdgeInsets.only(left: 15),
                 child: Image.asset(
                 'assets/emsLogo.png',
                 fit: BoxFit.contain,
-                height: 72,
-                )
-              )
+                height: 80,
+                
+                ),
+               
+              ),
+               onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
+                }
                 ],
-          ),
+                
+          ),*/
           
           
          
           
         );
 
-     /* title: Image.asset(
-            'assets/emsLogo.png',
-            fit: BoxFit.contain,
-            height: 72,
-            ),
-            toolbarHeight: 90,
-          elevation: 5,
-          backgroundColor: Color(0xFF091C32),
-          shadowColor: Colors.grey,
-
-        );*/
+    

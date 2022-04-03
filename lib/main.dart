@@ -1,9 +1,12 @@
+import 'package:election_management_system/Controller/menuController.dart';
 import 'package:flutter/material.dart';
 import 'package:election_management_system/Screens/login.dart';
 import 'package:election_management_system/Screens/homepage.dart';
+import 'package:get/get.dart';
 
 
 void main() {
+  Get.put(MenuController());
   runApp(const MyApp());
 }
 
