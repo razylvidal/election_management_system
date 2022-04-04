@@ -1,4 +1,4 @@
-# ems
+# Election Management System
 
 A new Flutter project.
 
