@@ -1,13 +1,10 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:election_management_system/Screens/candidate.dart';
-import 'package:election_management_system/Screens/election.dart';
-import 'package:election_management_system/Screens/login.dart';
-import 'package:election_management_system/Screens/voters.dart';
+import 'package:election_management_system/Screens/Table/TableDashboard.dart';
+import 'package:election_management_system/Widgets/hamburgerMenu.dart';
 import 'package:election_management_system/Widgets/top_navigator.dart';
 import 'package:flutter/material.dart';
 
-import '../Widgets/customText.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
@@ -16,138 +13,18 @@ class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var colors;
     return Scaffold(
       //Top Navigation Bar
       appBar: topNavigationBar(context, scaffoldKey),
-      
-      
-
       //hamburger menu
-      drawer: Drawer(
-        child: ListView(
-          padding: const EdgeInsets.only(left: 0,right: 0),
-          children: <Widget>[
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Color(0xFF091C32),
-              ),
-              child: Text(
-                'Dashboard',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-
-              //Navigation Label
-              
-            ),
-
-          //Dashboard
-                ListTile(
-                  leading: const Icon(Icons.dashboard),
-                  title: const CustomText(
-                    text: "Dashboard",
-                    size: 20,
-                    color: Colors.black,
-                    weight: FontWeight.w700,
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomePage(),
-                      ),
-                    );
-                  },
-                ),
-
-                //Election
-                ListTile(
-                  leading: const Icon(Icons.assessment),
-                  title: const CustomText(
-                    text: "Elections",
-                    size: 20,
-                    color: Colors.black,
-                    weight: FontWeight.w700,
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ElectionPage(),
-                      ),
-                    );
-                  },
-                ),
-
-                //Candidates
-                ListTile(
-                  leading: const Icon(Icons.person),
-                  title: const CustomText(
-                    text: "Candidates",
-                    size: 20,
-                    color: Colors.black,
-                    weight: FontWeight.w700,
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CandidatePage(),
-                      ),
-                    );
-                  },
-                ),
-
-                //Voters
-                ListTile(
-                  leading: const Icon(Icons.people),
-                  title: const CustomText(
-                    text: "Voters",
-                    size: 20,
-                    color: Colors.black,
-                    weight: FontWeight.w700,
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => VotersPage(),
-                      ),
-                    );
-                  },
-                ),
-
-                //settings
-                ListTile(
-                  leading: const Icon(Icons.settings),
-                  title: const CustomText(
-                    text: "Settings",
-                    size: 20,
-                    color: Colors.black,
-                    weight: FontWeight.w700,
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => VotersPage(),
-                      ),
-                    );
-                  },
-                ),
-
-
-                
-
-          ],
-        ),
-      ),
+      drawer: HamburgerDrawer(context, scaffoldKey),
+        
+      
 
       //Body
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
 
 
@@ -158,9 +35,9 @@ class HomePage extends StatelessWidget {
             children: [
               Container(
               padding: const EdgeInsets.only(left: 50, right: 50),
-            ),
+              ),
 
-
+              //search bar
               SizedBox(
                 width: 500,
                 child: TextField(
@@ -172,65 +49,78 @@ class HomePage extends StatelessWidget {
                     prefixIcon: const Icon(Icons.search),
                   ),
                 ),
-            ),
+               ),
 
-            Container(
-              padding: const EdgeInsets.only(left: 25, right: 25),
-            ),
-            SizedBox(
-                width: 500,
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+              //filter bar
+              Container(
+                padding: const EdgeInsets.only(left: 25, right: 25),
+              ),
+              SizedBox(
+                  width: 500,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      hintText: 'Filter',
+                      prefixIcon: const Icon(Icons.arrow_downward),
                     ),
-                    hintText: 'Filter',
-                    prefixIcon: const Icon(Icons.arrow_downward),
                   ),
-                ),
-            ),
+              ),
             
             Container(
               padding: const EdgeInsets.only(left: 25, right: 50),
             ),
 
-            TextButton.icon(
-                      //Today collection graph
-                      icon: Icon(
-                        Icons.folder,
-                        size: 24,
-                        color: Colors.black,
-                      ),
-                      label: Text(
-                        //vars here to be setState
-                        'Create Election',
-                        softWrap: true,
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.black,
-                          fontFamily: 'Cairo_Bold',
+            
+
+              //create election button
+              Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  shadowColor: const Color(0xFF091C32),
+                  elevation: 5,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Column(
+                      children: [
+                        TextButton.icon(
+                          //Today collection graph
+                          icon: const Icon(
+                            Icons.folder,
+                            size: 24,
+                            color: Color(0xFF091C32),
+                          ),
+                          label: const Text(
+                            //vars here to be setState
+                            'Create Election',
+                            softWrap: true,
+                            style: TextStyle(
+                              fontSize: 20,
+                              color:  Color(0xFF091C32),
+                              fontFamily: 'Cairo_Bold',
+                            ),
+                          ),
+                          onPressed: () {}, //pwdeng refresh button
                         ),
-                      ),
-                      onPressed: () {}, //pwdeng refresh button
+                      
+                      ],
                     ),
-        ],
+                  ),
+                ),
 
-        
-        
-
-        
-        
-        
-
- 
-          
-      
-
-
-
-
-        
+              ],
+          ),
+          Expanded(
+            child: Container(
+               width: (MediaQuery.of(context).size.width),
+              height: (MediaQuery.of(context).size.height) / .5,
+              child: TableDashboard(),
+            ),
           )
+
+
         ]
       )
           
