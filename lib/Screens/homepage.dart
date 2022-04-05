@@ -1,31 +1,36 @@
 import 'package:election_management_system/Screens/candidate.dart';
 import 'package:election_management_system/Screens/election.dart';
+import 'package:election_management_system/Screens/login.dart';
 import 'package:election_management_system/Screens/voters.dart';
+import 'package:election_management_system/Tables/dashboardList.dart';
 import 'package:election_management_system/Widgets/top_navigator.dart';
 import 'package:flutter/material.dart';
 
 import '../Widgets/customText.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatelessWidget {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+
+  HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    var colors;
     return Scaffold(
-
       //Top Navigation Bar
       appBar: topNavigationBar(context, scaffoldKey),
+      
+      
 
       //hamburger menu
-      endDrawer: Drawer(
+      drawer: Drawer(
         child: ListView(
-          padding: EdgeInsets.zero,
+          padding: const EdgeInsets.only(left: 0,right: 0),
           children: <Widget>[
             const DrawerHeader(
               decoration: BoxDecoration(
                 color: Color(0xFF091C32),
               ),
-
-              //Navigation Label
               child: Text(
                 'Dashboard',
                 style: TextStyle(
@@ -33,148 +38,123 @@ class HomePage extends StatelessWidget {
                   fontSize: 24,
                 ),
               ),
+
+              //Navigation Label
+              
             ),
 
+          //Dashboard
+                ListTile(
+                  leading: const Icon(Icons.dashboard),
+                  title: const CustomText(
+                    text: "Dashboard",
+                    size: 20,
+                    color: Colors.black,
+                    weight: FontWeight.w700,
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomePage(),
+                      ),
+                    );
+                  },
+                ),
 
-            //Label Manage
-            const ListTile(
-              contentPadding: EdgeInsets.only(left: 125,),
-              title: Text('Manage'),
-            ),
+                //Election
+                ListTile(
+                  leading: const Icon(Icons.assessment),
+                  title: const CustomText(
+                    text: "Elections",
+                    size: 20,
+                    color: Colors.black,
+                    weight: FontWeight.w700,
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ElectionPage(),
+                      ),
+                    );
+                  },
+                ),
 
-            //Dashboard Page
-            // ignore: deprecated_member_use
-            FlatButton(
-              onPressed: () {
-                Navigator.push(
-                context, MaterialPageRoute(builder: (_) => HomePage()));
-              },
-              child: const Text(
-                'Dashboard',
-                style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
-              ),
-              padding: const EdgeInsets.only(bottom: 25),
-            ),
-            
-            //Election Page
-            // ignore: deprecated_member_use
-            FlatButton(
-              onPressed: () {
-                Navigator.push(
-                context, MaterialPageRoute(builder: (_) => ElectionPage()));
-              },
-              child: const Text(
-                'Election',
-                style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
-              ),
-              padding: const EdgeInsets.only(top: 25, bottom: 25),
-            ),
+                //Candidates
+                ListTile(
+                  leading: const Icon(Icons.person),
+                  title: const CustomText(
+                    text: "Candidates",
+                    size: 20,
+                    color: Colors.black,
+                    weight: FontWeight.w700,
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CandidatePage(),
+                      ),
+                    );
+                  },
+                ),
 
-            //Candidate Page
-            // ignore: deprecated_member_use
-            FlatButton(
-              onPressed: () {
-                Navigator.push(
-                context, MaterialPageRoute(builder: (_) => CandidatePage()));
-              },
-              child: const Text(
-                'Candidates',
-                style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
-              ),
-              padding: const EdgeInsets.only(top: 25, bottom: 25),
-            ),
+                //Voters
+                ListTile(
+                  leading: const Icon(Icons.people),
+                  title: const CustomText(
+                    text: "Voters",
+                    size: 20,
+                    color: Colors.black,
+                    weight: FontWeight.w700,
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => VotersPage(),
+                      ),
+                    );
+                  },
+                ),
 
-
-            //Voters Page
-            // ignore: deprecated_member_use
-            FlatButton(
-              onPressed: () {
-                Navigator.push(
-                context, MaterialPageRoute(builder: (_) => VotersPage()));
-              },
-              child: const Text(
-                'Voters',
-                style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
-              ),
-              padding: const EdgeInsets.only(top: 25, bottom: 25),
-            ),
-            
-            //Label Settings
-            const ListTile(
-              contentPadding: EdgeInsets.only(left: 125),
-              title: Text('Settings'),
-            ),
-
-
-            //Account Page
-            // ignore: deprecated_member_use
-            FlatButton(
-              onPressed: () {},
-              child: const Text(
-                'Account',
-                style: TextStyle(color: Color(0xFF091C32), fontSize: 25),
-              ),
-              padding: const EdgeInsets.only(bottom: 25),
-            ),
+                //settings
+                ListTile(
+                  leading: const Icon(Icons.settings),
+                  title: const CustomText(
+                    text: "Settings",
+                    size: 20,
+                    color: Colors.black,
+                    weight: FontWeight.w700,
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => VotersPage(),
+                      ),
+                    );
+                  },
+                ),
 
 
-            //Logout Button
-            // ignore: deprecated_member_use
-            FlatButton(
-              onPressed: () {},
-              child: const Text(
-                'Logout',
-                style: TextStyle(color: Colors.red, fontSize: 25),
-              ),
-              padding: const EdgeInsets.only(top: 25, bottom: 25),
-            ),
+                
+
           ],
         ),
       ),
-
 
       //Body
-      body: Container(
-        child: Column(
-          children: <Widget>[
+      body: Column(
+        
+      )
 
-            //Title Page
-            Container(
-              height: MediaQuery.of(context).size.height * 0.1,
-              width: MediaQuery.of(context).size.width,
-              color: Color(0xFF091C32),
-              child: Center(
-                child: CustomText(
-                  text: 'Dashboard',
-                  color: Colors.white,
-                  size: 30,
-                  weight: FontWeight.bold,
-                ),
-              ),
-            ),
-
-            Container(
-              height: MediaQuery.of(context).size.height * 0.8,
-              width: MediaQuery.of(context).size.width,
-              color: Color(0xFF091C32),
-              child: Center(
-                child: CustomText(
-                  text: 'Welcome to Election Management System',
-                  color: Colors.white,
-                  size: 20,
-                  weight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
 
 
 
 
 
     );
-    
   }
 }
