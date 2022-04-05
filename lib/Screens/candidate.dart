@@ -118,7 +118,7 @@ class CandidatePage extends StatelessWidget {
               ),
               padding: const EdgeInsets.only(bottom: 25),
             ),
-
+            
 
             //Logout Button
             // ignore: deprecated_member_use
